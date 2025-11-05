@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/favicon.ico">
+    <title>TaskTaskGo - Уведомления</title>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="/static/js/services/notification-service.js"></script>
+    <script src="/static/js/users/notifications.js" defer></script>
+    <link rel="stylesheet" href="/static/style/notifications.css">
+</head>
+<body>
+    <h1>TaskTaskGo - Уведомления</h1>
+
+    <div id="controls">
+        <button id="markAllReadBtn">Отметить все как прочитанные</button>
+        <button id="clearBtn">Очистить историю</button>
+    </div>
+
+    <div id="notifications">
+        <h2>История уведомлений:</h2>
+        <!-- Уведомления будут добавляться здесь -->
+    </div>
+</body>
+</html>

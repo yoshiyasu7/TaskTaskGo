@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="icon" href="/static/favicon.ico">
+        <title>Вход в TaskTaskGo</title>
+        <script src="/static/js/users/auth.js" defer></script>
+        <script src="/static/js/users/login.js" defer></script>
+    </head>
+    <body>
+        <div id="login-form">
+            <h2>Вход в систему</h2>
+            <form id="loginForm">
+                <div>
+                    <label for="username">Имя пользователя:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div>
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Войти</button>
+            </form>
+            <div id="error-message" style="color: red; display: none;"></div>
+            <p>Нет аккаунта? <a href="/register">Зарегистрироваться</a></p>
+        </div>
+    </body>
+</html>

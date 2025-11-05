@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="/static/favicon.ico">
+    <title>Создание проекта</title>
+    <script src="/static/js/users/auth.js" defer></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="/static/js/services/notification-service.js"></script>
+    <script src="/static/js/projects/project_create.js" defer></script>
+</head>
+<body>
+<h2>Создать проект</h2>
+<form id="createProjectForm">
+    <div>
+        <label>Название</label>
+        <input id="title" name="title" required>
+    </div>
+    <div>
+        <label>Описание</label>
+        <textarea id="content" name="content"></textarea>
+    </div>
+    <button type="submit">Создать</button>
+    <a href="/profile">Отмена</a>
+</form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/static/favicon.ico">
+    <title>Профиль - TaskTaskGo</title>
+    <script src="/static/js/users/auth.js" defer></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="/static/js/services/notification-service.js"></script>
+    <script src="/static/js/users/profile.js" defer></script>
+    <style>
+        .project { border: 1px solid #ddd; padding: 10px; margin: 10px 0; }
+        .task { margin-left: 20px; }
+        .actions a { margin-right: 8px; }
+    </style>
+</head>
+<body>
+<div>
+    <header>
+        <h1>Профиль</h1>
+        <button id="logout-btn">Выйти</button>
+        <button id="notifications-link" style="margin-left: 8px;"><a href="/notifications">Уведомления</a></button>
+    </header>
+
+    <section id="user-info"></section>
+    <h2>Мои проекты</h2>
+    <div id="projects"></div>
+</div>
+</body>
+</html>
