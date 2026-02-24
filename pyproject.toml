@@ -1,0 +1,41 @@
+[project]
+name = "tasktaskgo"
+version = "0.1.0"
+description = "TaskTaskGo project"
+authors = [
+    {name = "Maxim Shadrin",email = "max.wojw@gmail.com"},
+]
+readme = "README.md"
+requires-python = ">=3.10,<4.0"
+dependencies = [
+    "aiobotocore (>=2.24.3,<3.0.0)",
+    "aiohttp (>=3.13.0,<4.0.0)",
+    "alembic (>=1.16.5,<2.0.0)",
+    "asyncpg (>=0.30.0,<0.31.0)",
+    "bcrypt (>=4.0.1,<5.0.0)",
+    "fastapi (>=0.118.3,<0.119.0)",
+    "httpx (>=0.28.1,<0.29.0)",
+    "jinja2 (>=3.1.6,<4.0.0)",
+    "loguru (>=0.7.3,<0.8.0)",
+    "markdown2 (>=2.5.4,<3.0.0)",
+    "passlib (>=1.7.4,<2.0.0)",
+    "propcache (>=0.4.1,<0.5.0)",
+    "pydantic (>=2.11.10,<3.0.0)",
+    "pydantic-settings (>=2.11.0,<3.0.0)",
+    "python-dotenv (>=1.1.1,<2.0.0)",
+    "python-engineio (>=4.12.3,<5.0.0)",
+    "python-jose (>=3.5.0,<4.0.0)",
+    "python-socketio (>=5.11.0,<6.0.0)",
+    "requests (>=2.32.5,<3.0.0)",
+    "sqlalchemy (>=2.0.43,<3.0.0)",
+    "uvicorn (>=0.37.0,<0.38.0)",
+]
+
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.group.dev.dependencies]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
