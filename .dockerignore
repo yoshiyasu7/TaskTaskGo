@@ -1,0 +1,48 @@
+# Version control
+.git
+.gitignore
+
+# IDE
+.idea
+.vscode
+.cursor
+
+# Python artifacts
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.egg-info
+*.egg
+.venv
+venv
+
+# Logs (generated at runtime, not needed in image)
+logs/
+*.log
+
+# Docker files (no need to copy into context)
+Dockerfile
+.dockerignore
+settings/docker-compose.yaml
+
+# Environment secrets (injected via docker-compose env_file)
+settings/.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+dist
+build
+
+# Tests
+tests/
+
+# Documentation
+*.md
+
+# Data
+*.db
+data/

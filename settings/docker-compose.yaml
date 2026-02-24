@@ -3,25 +3,59 @@ services:
     build:
       context: ../
       dockerfile: Dockerfile
-    image: tasktaskgo-image:1.0
+    image: tasktaskgo:1.0
+    container_name: tasktaskgo-app
+    restart: unless-stopped
+    init: true
     ports:
       - "8080:8080"
+    env_file:
+      - .env
     environment:
-      DATABASE_URL: postgresql+asyncpg://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}
+      RUN_MIGRATIONS: "true"
     volumes:
-      - app_data:/path/in/container
+      - app_logs:/app/logs
     depends_on:
-      - database
+      database:
+        condition: service_healthy
+    networks:
+      - tasktaskgo-net
+    deploy:
+      resources:
+        limits:
+          memory: 9G
+          cpus: "2.0"
 
   database:
-    image: postgres:18
+    image: postgres:17-alpine
+    container_name: tasktaskgo-db
+    restart: unless-stopped
+    env_file:
+      - .env
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - tasktaskgo-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${DB_USER} -d $${DB_NAME}"]
+      interval: 10s
+      timeout: 5s
+      start_period: 30s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: "1.0"
 
 volumes:
-  app_data:
   postgres_data:
+  app_logs:
+
+networks:
+  tasktaskgo-net:
+    driver: bridge
