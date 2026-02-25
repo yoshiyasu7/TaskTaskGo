@@ -26,7 +26,7 @@ async def add_new_project(
         project_with_user = ProjectCreate(title=project_data.title, content=project_data.content,
                                           user_id=current_user.id)
         result = await add_project(project_data=project_with_user, session=session)
-        app_logger.info(f"Проект успешно создан с ID {result["project_id"]}, пользователем {current_user.id}")
+        app_logger.info(f"Проект успешно создан с ID {result['project_id']}, пользователем {current_user.id}")
         return result
     except Exception as e:
         error_logger.error(f"Ошибка при создании проекта пользователем {current_user.id}: {str(e)}")
@@ -75,7 +75,7 @@ async def delete_project_router(
 ) -> dict:
     try:
         app_logger.info(f"Удаление проекта {project_id} пользователем {current_user.id}")
-        result = await delete_project(project_id=project_id, session=session)
+        await delete_project(project_id=project_id, session=session)
         app_logger.info(f"Проект {project_id} успешно удалён пользователем {current_user.id}")
         return {"message": "Проект удалён"}
     except Exception as e:

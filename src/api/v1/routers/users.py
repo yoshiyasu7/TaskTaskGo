@@ -15,7 +15,7 @@ async def register_user(user_data: UserRegister, session: AsyncSession = Depends
     app_logger.info(f"Запрос на регистрацию нового пользователя: {user_data.username}")
     try:
         result = await add_user(user_data=user_data, session=session)
-        app_logger.info(f"Пользователь успешно зарегистрирован: {result["user_id"]}")
+        app_logger.info(f"Пользователь успешно зарегистрирован: {result['user_id']}")
         return result
     except Exception as e:
         error_logger.error(f"Ошибка регистрации пользователя {user_data.username}: {str(e)}")
