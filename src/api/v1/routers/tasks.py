@@ -28,7 +28,7 @@ async def add_task_in_project(
             background_tasks=background_tasks,
             session=session
         )
-        app_logger.info(f"Задача успешно создана с ID {result["success"]["task_id"]} пользователем {current_user.id}")
+        app_logger.info(f"Задача успешно создана с ID {result['success']['task_id']} пользователем {current_user.id}")
         return result
     except Exception as e:
         error_logger.error(f"Ошибка при создании задачи пользователем {current_user.id}: {str(e)}")
