@@ -4,6 +4,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
+    HOST: str = "localhost"
+    PORT: int = 8000
     BASE_DIR: str = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../'))
     DB_HOST: str
     DB_PORT: int
