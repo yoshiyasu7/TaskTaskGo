@@ -157,6 +157,7 @@ fabric.properties
 
 # Environment / secrets
 .env
+.env.docker
 
 # Data
 *.db
