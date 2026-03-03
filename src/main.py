@@ -32,7 +32,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 if __name__ == "__main__":
     uvicorn.run(
         "src.main:app",
-        host=settings.HOST,
-        port=settings.PORT,
+        host=settings.APP_HOST,
+        port=settings.APP_PORT,
         reload=False,
     )
