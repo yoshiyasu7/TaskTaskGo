@@ -32,10 +32,7 @@ COPY --from=builder /build/.venv ./.venv
 COPY src/ ./src/
 COPY static/ ./static/
 COPY templates/ ./templates/
-COPY migration/ ./migration/
-COPY alembic.ini run.py ./
 COPY settings/settings.json ./settings/settings.json
-COPY --chmod=755 docker-entrypoint.sh ./
 
 RUN mkdir -p logs && chown -R appuser:appuser /app
 
@@ -43,12 +40,11 @@ ENV PATH="/app/.venv/bin:$PATH" \
     PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
-EXPOSE 8080
+EXPOSE 8000
 
 USER appuser
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
-    CMD ["python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/docs')"]
+    CMD ["python", "-c", "import urllib.request as u; p=os.getenv('HOST_PORT','8000'); u.urlopen(f'http://localhost:{p}/docs')"]
 
-ENTRYPOINT ["./docker-entrypoint.sh"]
-CMD ["python", "run.py"]
+CMD ["python", "-m", "src.main"]
