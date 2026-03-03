@@ -4,14 +4,20 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    HOST: str = "localhost"
-    PORT: int = 8000
     BASE_DIR: str = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../'))
+
+    APP_HOST: str = "0.0.0.0"
+    APP_PORT: int = 8000
+    APP_PORT_OUTSIDE: int = 8080
+
     DB_HOST: str
     DB_PORT: int
+    DB_HOST_OUTSIDE: str
+    DB_PORT_OUTSIDE: int
     DB_NAME: str
     DB_USER: str
     DB_PASSWORD: str
+
     SECRET_KEY: str
     ALGORITHM: str
 
@@ -33,9 +39,16 @@ class Settings(BaseSettings):
 
     model_config = SettingsConfigDict(env_file=f'{BASE_DIR}/settings/.env')
 
+
     def get_db_url(self):
         return (f"postgresql+asyncpg://{self.DB_USER}:{self.DB_PASSWORD}@"
                 f"{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}")
+    
+    
+    def get_db_url_migr(self):
+        return (f"postgresql+asyncpg://{self.DB_USER}:{self.DB_PASSWORD}@"
+                f"{self.DB_HOST_OUTSIDE}:{self.DB_PORT_OUTSIDE}/{self.DB_NAME}")
+
 
     def load_logging_config(self):
         """Загрузка настроек логирования из JSON файла"""
